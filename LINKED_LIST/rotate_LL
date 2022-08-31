@@ -1,0 +1,41 @@
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+    // to check if the given LL is null
+        if(head==null || head.next==null || k==0)
+        {
+            return head;
+        }
+        
+        // count the length of the LL
+        int c=1;
+        ListNode temp=head;
+        while(temp.next!=null)
+        {
+            c+=1;
+        temp=temp.next;
+        }
+        
+        
+        
+        //point back the temp.next to head to form a circular linked list
+        temp.next=head;
+        
+        // calculate the K ->(c-k) , needed to move from the head
+        k=k%c;
+        k=c-k;
+        
+        // traverse till the K
+        while(k>0)
+        {  
+            temp=temp.next;
+            k-=1;
+        }
+        
+        //move the head to next node before cutting the chain
+        head=temp.next;
+        temp.next=null;
+        return head;
+        
+        
+    }
+}
