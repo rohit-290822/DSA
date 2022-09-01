@@ -1,0 +1,35 @@
+public class Solution {
+    public ListNode solve(ListNode A) {
+   
+    ListNode fast = findElement(A) ;
+    ListNode slow = A ;
+    ListNode prev = null ;
+
+    while (slow != fast)
+    {
+        slow = slow.next ;
+        prev = fast ; //prev pointer pointing to starting element of the cyclic loop
+        fast = fast.next ;
+    }
+    prev.next = null ;
+
+    return A ;
+    }
+
+    public ListNode findElement(ListNode A)
+    {
+        ListNode slow = A, fast = A ;
+
+        while(fast != null && fast.next != null)
+        {
+            slow = slow.next ;
+            fast = fast.next.next ;
+
+            if(slow == fast)
+            {
+                return slow ;
+            }
+        }
+        return null ;
+    }
+}
