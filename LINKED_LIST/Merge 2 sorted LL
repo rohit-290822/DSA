@@ -1,0 +1,32 @@
+imp prob
+public class Solution {
+    public ListNode mergeTwoLists(ListNode A, ListNode B) {
+        if(A==null) return B;
+        if(B==null) return A;
+
+        if(A.val>B.val)
+        {
+            ListNode temp=A;
+            A=B;
+            B=temp;
+        }
+
+
+        ListNode res=A;
+        while(A!=null && B!=null)
+        {
+            ListNode tmp=null;
+            while(A!=null && A.val<=B.val)
+            {
+                tmp=A;
+                A=A.next;
+            }
+
+            tmp.next=B;
+             ListNode temp=A;
+            A=B;
+            B=temp;
+        }
+        return res;
+    }
+}
