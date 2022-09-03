@@ -3,7 +3,7 @@ class Solution
     public int NthRoot(int n, int m)
     {
                   
-                  
+                   
 double low=1;
 double high=m;
 while(low<=high)
