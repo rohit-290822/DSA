@@ -7,7 +7,7 @@ public class Solution {
             ch=A.charAt(i);
             if(ch=='(' || ch=='{' ||ch=='[' )            
             { 
-                ss.push(ch);
+                ss.push(ch);   
             }
             else if(ch==')' && !ss.isEmpty() && ss.peek()=='(' )            
             {
