@@ -1,37 +1,35 @@
-public class Solution {
-    public int solve(String A) {
- {
-        Stack<Character> ss=new Stack<Character>();
-        char ch;
-        for(int i=0;i<A.length();i++) {
-            ch=A.charAt(i);
-            if(ch=='(' || ch=='{' ||ch=='[' )            
-            { 
-                ss.push(ch);   
-            }
-            else if(ch==')' && !ss.isEmpty() && ss.peek()=='(' )            
+class Solution {
+    public boolean isValid(String s) {
+    Stack<Character> a = new Stack<>();
+        for(int i=0;i<s.length();i++)
+        {
+            if(s.charAt(i)=='(' || s.charAt(i)=='[' || s.charAt(i)=='{')
             {
-                ss.pop();
-                continue;
+            a.push(s.charAt(i));
             }
-            else if(ch==']' && !ss.isEmpty() && ss.peek()=='[' )            
+            else if(s.charAt(i)==')' && a.size()!=0 && a.peek()=='(')
             {
-                ss.pop();
-                continue;
+            a.pop();
             }
-            else if(ch=='}' && !ss.isEmpty() && ss.peek()=='{' )            
+            else if((s.charAt(i)==']' && a.size()!=0 && a.peek()=='['))
             {
-                ss.pop();
-                continue;
+            a.pop();
+            }
+
+            else if((s.charAt(i)=='}' && a.size()!=0 && a.peek()=='{'))
+            {
+            a.pop();
             }
             else {
-                return 0;
-            }
-            
+            return false;
         }
-          if(!ss.empty())
-                return 0;
-        return 1;
+        }
+                                                                     
+        if(a.size()!=0)
+        {
+            return false;
+        }
+                                                                     return true;
+        
     }
-}
 }
