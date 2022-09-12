@@ -1,0 +1,55 @@
+public class Solution {
+    public int[] solve(int A) {
+        Queue<String> q = new LinkedList<>();
+        int arr[]= new int[A];
+        if(A==1)
+        {
+           arr[0]=1;
+           return arr;
+        }
+        else if(A==2)
+        { 
+            arr[0]=1;
+            arr[1]=2;
+            return arr;
+            
+        }
+        else if(A==3)
+        {
+            arr[0]=1;
+            arr[1]=2;
+            arr[2]=3;
+            return arr; 
+        }
+        else{
+        int deletd=0;
+        q.add("1");
+        q.add("2");
+        q.add("3"); 
+        int count=3;
+   
+
+        while(count<A)
+        {
+            String b=q.peek();
+            arr[deletd]=Integer.parseInt(b);
+            deletd++;
+            q.remove();
+        q.add(b+"1");
+        q.add(b+"2");
+        q.add(b+"3"); 
+        count+=3;
+            
+
+        }
+
+        while(deletd<A)
+        {
+            arr[deletd]=Integer.parseInt(q.remove());
+            deletd++;
+        }
+        return arr;
+        }
+
+    }
+}
