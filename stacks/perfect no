@@ -1,0 +1,50 @@
+public class Solution {
+    public String solve(int A) {
+        Queue<String> a= new LinkedList<>();
+        a.add("1");
+        a.add("2");
+        int deleted=0;
+        int count=2;
+        while(count<A)
+        {
+            String s=a.peek();
+            a.remove();
+            deleted+=1;
+            a.add(s+"1");
+            a.add(s+"2");
+            count+=2;
+
+        }
+
+        while(deleted<A-1)
+        {
+            a.remove();
+            deleted++;
+        }
+
+        String g=a.peek();
+        return g+rev(g);
+
+
+    }
+
+    static String rev(String g)
+    {  
+// String y="";
+// char t[]= g.toCharArray();
+// for(int i=t.length-1;i>=0;i--)
+// {  
+//     y+=String.valueOf(t[i]);
+
+// }
+
+       
+//        return y;
+      
+//     }
+
+StringBuilder sb = new StringBuilder(g);
+return sb.reverse().toString();
+
+    }
+}
