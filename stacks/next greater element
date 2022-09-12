@@ -1,0 +1,24 @@
+public class Solution {
+    public int[] nextGreater(int[] A) {
+        Stack<Integer> a = new Stack<>();
+        for(int i=A.length-1;i>=0;i--)
+        {
+            while(a.size()!=0 && a.peek()<=A[i])
+            {
+                a.pop();
+            }
+            if(a.size()==0)
+            {
+                a.push(A[i]);
+                A[i]=-1;
+            }
+            else 
+            {   int t=A[i];
+                A[i]=a.peek();
+                a.push(t);
+            }
+
+        }
+        return A;
+    }
+}
