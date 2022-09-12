@@ -1,0 +1,19 @@
+public class Solution {
+    public int[] solve(int[] A, int B) {
+Queue<Integer> a = new LinkedList<>();
+for(int i=B-1;i>=0;i--)
+{
+    a.add(A[i]);
+}
+
+
+int c=0;
+while(c<B)
+{
+    A[c]=a.remove();
+    c+=1;
+}
+return A;
+
+    }
+}
