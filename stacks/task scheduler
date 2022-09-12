@@ -1,0 +1,31 @@
+public class Solution {
+    public int solve(int[] A, int[] B) {
+        Queue<Integer>a = new LinkedList<>();
+        if(A.length==1 && B.length==1)
+        {
+            return 1;
+        }
+for(int i:A)
+{
+    a.add(i);
+}
+int c=0;
+int val=0;
+while(a.size()>0)
+{
+    while(a.peek()!=B[c])
+    {
+    int y=a.peek();
+    a.remove();
+    a.add(y);
+    val+=1;
+    }
+    c+=1;
+    val+=1;
+    a.remove();
+
+
+}
+return val;
+    }
+}
