@@ -1,0 +1,40 @@
+public class Solution {
+    public int evalRPN(String[] A) {
+        int c=0;
+        Stack<Integer> a = new Stack();
+        for(int i=0;i<A.length;i++)
+        {
+if(!A[i].equals("+") && !A[i].equals("-") && !A[i].equals("/") && !A[i].equals("*") )
+{
+    a.push(Integer.parseInt(A[i]));
+}
+else
+{ 
+    int d=(a.pop());
+    int b=(a.pop());
+    if(A[i].equals("+"))
+    {
+         c= d+b;
+    }
+    else if(A[i].equals("-"))
+    {  
+        c=b-d;
+        
+    }
+       else if(A[i].equals("/"))
+    {  
+        c=(int)(b/d);
+        
+    }
+    else 
+    {   
+        c=b*d;
+    }
+    a.push((int)(c));
+}
+        }
+
+        
+        return a.pop();
+    }
+}
