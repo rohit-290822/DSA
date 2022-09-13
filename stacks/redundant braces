@@ -1,0 +1,32 @@
+public class Solution {
+    public int braces(String A) {
+        Stack<Character> a = new Stack<>();
+        for(int i=0;i<A.length();i++)
+        {
+            if(A.charAt(i)==')')
+            {
+                boolean flag=true;
+                char r=a.peek();
+                a.pop();
+                while(a.size()!=0 && r!='(')
+                {
+                    if(r=='*' || r=='-' || r=='+' || r=='/' )
+                    {
+                        flag=false;
+                    }
+                    r=a.peek();
+                    a.pop();
+                }
+                if(flag==true)
+                {
+                    return 1;
+                }
+            }
+            else 
+            {
+                a.push(A.charAt(i));
+            }
+        }
+        return 0;
+    }
+}
