@@ -5,7 +5,6 @@ class Solution {
         {
             nn*=-1;
         }
-        
         double r=1.0;
         while(nn>0)
         {
