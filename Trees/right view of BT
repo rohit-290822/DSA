@@ -1,0 +1,23 @@
+public class Solution {
+    public ArrayList<Integer> solve(TreeNode A) {
+        ArrayList<Integer> a = new ArrayList<>();
+        left(A,a,0);
+        return a;
+
+    }
+
+    public void left(TreeNode A,ArrayList<Integer> a, int level)
+    {
+        if(A==null)
+        {
+            return ;
+        }
+        if(level==a.size())
+        {
+            a.add(A.val);
+        }
+ 
+         left(A.right,a,level+1);
+                left(A.left,a,level+1);
+    }
+}
