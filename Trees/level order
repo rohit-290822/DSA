@@ -1,35 +1,32 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        Queue<TreeNode> que=new LinkedList<TreeNode>();
-        List<List<Integer>> list=new LinkedList<List<Integer>>();
-        
-        if(root==null) return list;
-        que.add(root);
-        while(!que.isEmpty()){
-            int level=que.size();
-            List<Integer> subList=new LinkedList<Integer>();
-            for(int i=0;i<level;i++){
-                if(que.peek().left!=null) que.add(que.peek().left);
-                if(que.peek().right!=null) que.add(que.peek().right);
-                subList.add(que.remove().val);
-            }
-            list.add(subList);
+public class Solution {
+    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode A) {
+        Queue<TreeNode> a = new LinkedList<>();
+        ArrayList<ArrayList<Integer>> b = new ArrayList<>();
+        if(A==null)
+        {
+            return b;
         }
-        return list;
+
+        a.add(A);
+        while(a.size()!=0)
+        {   ArrayList<Integer> k= new ArrayList<>();
+            int c=a.size();
+            for(int i=0;i<c;i++)
+            {      TreeNode n=a.remove();
+                    if(n.left!=null)
+                    {
+                        a.add(n.left);
+                    }
+                     if(n.right!=null)
+                    {
+                        a.add(n.right);
+                    }
+             k.add(n.val);
+            }
+           
+            b.add(k);
+
+        }
+        return b;
     }
 }
