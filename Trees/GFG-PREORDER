@@ -1,0 +1,19 @@
+class BinaryTree
+{
+    //Function to return a list containing the preorder traversal of the tree.
+     
+    static ArrayList<Integer> preorder(Node root) // static method
+    { 
+        ArrayList<Integer> a= new ArrayList<Integer>(); 
+        pre(root,a);
+        return a;
+    }
+    public static void pre(Node root,ArrayList<Integer> a)
+    {
+        if(root==null) return;
+        a.add(root.data);
+        pre(root.left,a);
+        pre(root.right,a);
+    }
+
+}
