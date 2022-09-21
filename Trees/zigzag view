@@ -1,40 +1,55 @@
-public class Solution {
-    public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode A) {
-        ArrayList<ArrayList<Integer>> a = new ArrayList<>();
-        Queue<TreeNode> b = new LinkedList<>();
-        b.add(A);
-        boolean flag=false;
-        while(b.size()!=0)
-
-        {  
-        
-              LinkedList<Integer> c = new LinkedList<>();
-            int size=b.size();
-            for(int i=0;i<size;i++)
-            {    TreeNode n=b.remove();
-                if(n.left!=null)
-                {
-                        b.add(n.left);
-                }
-                if(n.right!=null)
-                {
-                        b.add(n.right);
-                }
-                if(flag==false)
-                {
-                c.addLast(n.val);
-                }
-                else
-                {
-                    c.addFirst(n.val);
-                }
-                            }
-                flag=!flag;
-
-            ArrayList<Integer> d= new ArrayList<>(c);
-            a.add(d);
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> a= new ArrayList<List<Integer>>();
+         if(root==null)
+            return a;
+        Queue<TreeNode> c = new LinkedList<>();          
+        c.add(root);
+        boolean r=true;
+        while(c.size()!=0)
+        {   LinkedList<Integer> b = new LinkedList<>();
+            int size=c.size();
+         for(int i=0;i<size;i++)
+         {   
+        if(r==true)
+         {
+             TreeNode n=c.remove();
+             b.addLast(n.val);
+             if(n.left!=null) c.add(n.left);
+             if(n.right!=null) c.add(n.right);
+         }
+             else 
+             { 
+                  TreeNode m=c.remove();
+             b.addFirst(m.val);
+             if(m.left!=null) c.add(m.left);
+             if(m.right!=null) c.add(m.right);
+                 
+             }
+          
+             
+         }
+         r=!r;
+         List<Integer> q = new ArrayList<>(b);
+         a.add(q);
+            
         }
-
         return a;
+        
     }
 }
