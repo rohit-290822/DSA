@@ -1,0 +1,21 @@
+public class Solution {
+    public ArrayList<Integer> solve(TreeNode A, int B) {
+        ArrayList<Integer> a= new ArrayList<>();
+        hello(A,B,a);
+        return a;
+    }
+    
+    public boolean hello(TreeNode A,int B, ArrayList<Integer> b)
+    {
+        if(A==null) return false;
+      
+        if(A.val==B) 
+        {   b.add(A.val);
+            return true;
+        }
+          b.add(A.val);
+        if( hello(A.left,B,b) ||  hello(A.right,B,b)) return true;
+        b.remove(b.size()-1);
+        return false;
+    }
+}
