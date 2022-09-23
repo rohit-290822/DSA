@@ -1,0 +1,42 @@
+class Tree
+{
+    //Function to check whether all nodes of a tree have the value 
+    //equal to the sum of their child nodes.
+    public static int isSumProperty(Node root)
+    {
+        // add your code here
+        if(root==null) return 1;
+        Queue<Node> a = new LinkedList<>();
+        a.add(root);
+        while(a.size()!=0)
+        {
+            int size=a.size();
+   
+            for(int i=0;i<size;i++)
+            {
+                Node n = a.remove();
+                  if(n.left==null && n.right==null) 
+                  {
+                      return 1;
+                  }
+                if(n.left==null )
+                {
+                if(n.data!=n.right.data) return 0;
+                }
+                if(n.right==null )
+                {
+                if(n.data!=n.left.data) return 0;
+                }
+                 if(n.left!=null && n.right!=null)
+                {
+                if(n.data!=n.left.data+n.right.data) return 0;
+                }
+                 if(n.left!=null) a.add(n.left);
+                if(n.right!=null)  a.add(n.right);
+                
+            }
+        }
+        return 1;
+        
+    }
+}
