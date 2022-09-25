@@ -1,0 +1,22 @@
+int kthLargest(TreeNode* root, int k) {
+        stack<TreeNode*> st; 
+        TreeNode* node = root;
+        int cnt = 0; 
+        while(true) {
+            if(node != NULL) {
+                st.push(node); 
+                node = node->right; 
+            }
+            else {
+    
+                if(st.empty() == true) break; 
+                node = st.top(); 
+                st.pop(); 
+                
+                cnt++; 
+                if(cnt == k) return node->val; 
+                node = node->left; 
+            }  
+        }
+        return -1;
+    }
