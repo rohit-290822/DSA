@@ -2,30 +2,32 @@ class GfG
 {
     Node deleteNode(Node head, int x)
     {
-	Node temp=head;
 	int c=1;
-
-	while(temp.next!=null && temp.next.next!=null)
-	{   
-	  if(c==x)
-        	{
-        	    temp.data=temp.next.data;
-        	    temp.next=temp.next.next;
-        	    
-        	}  
-    
-        temp=temp.next;
-	       c+=1;
-	}
-	if(c==x)
-	{ 
-	     temp.data=temp.next.data;
-        	    temp.next=temp.next.next;
-	    
-	}
-	if(c==x-1)
+	Node temp=head;
+	if(x==1)
 	{
-	    temp.next=null;
+	    head=head.next;
+	    return head;
+	}
+	if(head.next.next==null)
+	{
+	    head.next=null;
+	    return head;
+	}
+	while(temp.next!=null)
+	{   
+	    if(c==x-1)
+	    {   if(temp.next.next==null)
+	    {
+	        temp.next=null;
+	        return head;
+	    }
+	        
+	        temp.next=temp.next.next;
+	    }
+	    c+=1;
+	    temp=temp.next;
+	    
 	}
 	return head;
     }
