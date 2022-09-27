@@ -3,7 +3,7 @@ public class Solution {
         Stack<Integer> a= new Stack<>();
         for(int i=0;i<A.length;i++)
         {
-            while(a.size()!=0 && a.peek()>=A[i])
+            while(a.size()!=0 && A[i]<=a.peek())
             {
                 a.pop();
             }
