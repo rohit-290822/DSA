@@ -1,0 +1,87 @@
+int arr[] = new int[5];
+int top=-1;
+
+push(int a) 
+{
+top+=1;
+arr[top]=a;
+}
+
+
+pop()
+{
+int res=arr[top];
+top--;
+return res;
+}
+
+peek() 
+{
+
+return arr[top];
+}
+
+size()
+{
+return top+1;
+}
+
+isEmpty()
+{
+if(top==-1) return true
+}
+
+
+
+-------------------------
+GFG
+
+class MyStack
+{
+    int top;
+	int arr[] = new int[1000];
+
+    MyStack()
+	{
+		top = -1;
+	}
+	
+	//Function to push an integer into the stack.
+      void push(int a)
+
+ {
+
+     if(top==999){
+
+      return;
+
+     }
+
+     top++;
+
+     arr[top]=a;
+
+ } 
+
+ 
+
+    //Function to remove an item from top of the stack.
+
+ int pop()
+
+ {
+
+     if(top==-1){
+
+        return -1;
+
+     }
+
+        int res=arr[top];
+
+        top--;
+
+        return res;
+
+ }
+}
